@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KshitijPlay</title>
+  <style>
+    /* Global & Smooth Scroll */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; width: 100%; overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #222;
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      z-index: 1000;
+    }
+    .navbar .logo img { height: 40px; }
+    .navbar nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .navbar nav a {
+      padding: 0.5rem;
+      white-space: nowrap;
+      transition: background 0.3s;
+    }
+    .navbar nav a:hover { background: #555; border-radius: 4px; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; cursor: pointer; }
+    .hamburger span { width: 25px; height: 3px; background: #fff; margin: 4px; transition: 0.3s; }
+
+    /* Hero Section */
+    .hero { display: flex; align-items: center; justify-content: space-between; padding: 6rem 2rem 2rem; background: #f4f4f4; }
+    .hero .hero-text { max-width: 50%; }
+    .hero .hero-text h1 { font-size: 3rem; margin: 0; }
+    .hero .hero-text p { font-size: 1.2rem; }
+    .hero .hero-text button { margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 1rem; border: none; background: #ff5500; color: #fff; cursor: pointer; border-radius: 4px; transition: background 0.3s; }
+    .hero .hero-text button:hover { background: #e64a00; }
+    .hero .hero-image img { max-width: 400px; width: 100%; }
+
+    /* Sections */
+    section { padding: 4rem 2rem; }
+    h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .subtitle { color: #555; margin-bottom: 2rem; }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .card {
+      position: relative;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .moviebanner {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      display: block;
+    }
+    .moviebanner:hover{
+      scale: (2.07);
+    }
+    .card-content { padding: 1rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .card-content h3 { margin: 0 0 0.5rem; }
+    .card-content p { font-size: 0.9rem; color: #666; }
+    .card .duration { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.7); color: #fff; padding: 0.25rem 0.5rem; font-size: 0.8rem; border-radius: 4px; }
+
+    /* Footer */
+    footer { background: #222; color: #fff; padding: 2rem; text-align: center; }
+    .social-icons a { margin: 0 0.5rem; display: inline-block; transition: transform 0.3s; }
+    .social-icons a:hover { transform: scale(1.2); }
+    .footer-links a { color: #aaa; margin: 0 0.5rem; }
+    .footer-links a:hover { color: #fff; }
+    .back-to-top { position: fixed; bottom: 20px; right: 20px; background: #ff5500; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: none; z-index: 1000; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar nav { display: none; position: absolute; top: 60px; left: 0; width: 100%; background: #222; flex-direction: column; }
+      .navbar nav.active { display: flex; }
+      .hamburger { display: flex; }
+      .hero { flex-direction: column; text-align: center; }
+      .hero .hero-text, .hero .hero-image { max-width: 100%; }
+      .hero .hero-image { margin-top: 2rem; }
+      section { padding: 4rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo"><img src="imgs/logo.png" alt="KshitijPlay Logo" /></div>
+    <nav id="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#trending">Trending Shows</a>
+      <a href="#popular">Popular Movies</a>
+      <a href="#footer">Contact</a>
+    </nav>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <h1>Welcome to KshitijPlay</h1>
+      <p>Your ultimate Movies & Shows discovery platform.</p>
+      <button onclick="location.href='#trending'">Explore Trending</button>
+    </div>
+    <div class="hero-image">
+      <img src="mediafiles/hero.svg" alt="Media Icon" />
+    </div>
+  </section>
+
+  <!-- Trending Movies -->
+  <section id="trending">
+    <h2>Trending Shows</h2>
+    <p class="subtitle">Binge-worthy series everyone is talking about.</p>
+<div class="cards">
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/paradise.jpg" alt="Paradise" />
+        <div class="card-content">
+          <h3>Paradise</h3>
+          <p>In a sun-soaked town where secrets simmer, paradise is anything but perfect.</p>
+        </div>
+        <div class="duration">1S - 8E</div>
+      </div>
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/dexter.jpg" alt="Dexter" />
+        <div class="card-content">
+          <h3>Dexter</h3>
+          <p>A blood-spatter expert by day, a code-driven killer by night—justice has never been this personal.</p>
+        </div>
+        <div class="duration">8S - 96E</div>
+      </div>
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/daredevil.jpg" alt="Daredevil: Born Again" />
+        <div class="card-content">
+          <h3>Daredevil: Born Again</h3>
+          <p>Hell’s Kitchen’s blind protector rises once more—this time, redemption hits harder.</p>
+        </div>
+        <div class="duration">1S - 9E</div>
+      </div>
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/bridgerton.jpeg" alt="Bridgerton" />
+        <div class="card-content">
+          <h3>Bridgerton</h3>
+          <p>Scandal, seduction, and silk—where every whisper holds the power to ruin or reign.</p>
+        </div>
+        <div class="duration">3S - 24E</div>
+      </div>
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/suitsla.jpg" alt="Suits LA" />
+        <div class="card-content">
+          <h3>Suits LA</h3>
+          <p>New coast, same sharp suits—legal battles never looked this bold.</p>
+        </div>
+        <div class="duration">1S - 13E</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Shows -->
+  <section id="popular">
+    <h2>Popular Movies</h2>
+    <p class="subtitle">Catch the hottest films right now!</p>
+     <div class="cards">
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/spiderverse.jpg" alt="Spider-Man: Across the Spider-Verse" />
+        <div class="card-content">
+          <h3>Spider-Man: Across the Spider-Verse</h3>
+          <p>A mind-bending leap through the multiverse where every Spider-Person has a story—and every choice has a consequence..</p>
+        </div>
+        <div class="duration">2h 20m</div>
+      </div>
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/WALL-E.jpg" alt="WALL-E" />
+        <div class="card-content">
+          <h3>WALL-E</h3>
+          <p>In a world left behind, one small robot discovers the heart of humanity.</p>
+        </div>
+        <div class="duration">1h 37m</div>
+      </div>
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/barbie.jpg" alt="Barbie" />
+        <div class="card-content">
+          <h3>Barbie</h3>
+          <p>Living the dream… until the dream starts asking questions.</p>
+        </div>
+        <div class="duration">1h 54m</div>
+      </div>
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/frozen.jpg" alt="Frozen" />
+        <div class="card-content">
+          <h3>Frozen</h3>
+          <p>A kingdom frozen in fear, melted by the warmth of sisterhood.</p>
+        </div>
+        <div class="duration">1h 42m</div>
+      </div>
+      <div class="card">
+        <img class="moviebanner" src="mediafiles/moana2.jpg" alt="Moana 2" />
+        <div class="card-content">
+          <h3>Moana 2</h3>
+          <p>The ocean called once. Now it’s calling her again for a new adventure beyond the horizon.</p>
+        </div>
+        <div class="duration">1h 40m</div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><img src="imgs/facebook-icon.svg" alt="FB" width="24"></a>
+      <a href="#" aria-label="X"><img src="imgs/x-icon.svg" alt="X" width="24"></a>
+      <a href="#" aria-label="Instagram"><img src="imgs/instagram-icon.svg" alt="IG" width="24"></a>
+      <a href="#" aria-label="Reddit"><img src="imgs/reddit-icon.svg" alt="RD" width="24"></a>
+    </div>
+    <div class="footer-links">
+      <a href="https://example.com/terms" target="_blank">Terms & Conditions</a>|
+      <a href="https://example.com/privacy" target="_blank">Privacy Policy</a>
+    </div>
+    <p>&copy; 2025 KshitijPlay. All rights reserved.</p>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop">↑</button>
+
+  <script>
+    // Hamburger Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    // Back to Top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => backToTop.style.display = window.pageYOffset > 300 ? 'block' : 'none');
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop">↑</button>
+
+  <script>
+    // Hamburger Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    // Back to Top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => backToTop.style.display = window.pageYOffset > 300 ? 'block' : 'none');
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
