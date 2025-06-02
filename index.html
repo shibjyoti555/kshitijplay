@@ -14,6 +14,7 @@
       line-height: 1.6;
       color: #333;
       overflow-x: hidden;
+      background: #fafafa;
     }
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
@@ -77,13 +78,60 @@
       object-fit: cover;
       display: block;
     }
-    .moviebanner:hover{
-      scale: (2.07);
-    }
+    .moviebanner:hover { transform: scale(1.05); }
     .card-content { padding: 1rem; flex-grow: 1; display: flex; flex-direction: column; }
     .card-content h3 { margin: 0 0 0.5rem; }
     .card-content p { font-size: 0.9rem; color: #666; }
     .card .duration { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.7); color: #fff; padding: 0.25rem 0.5rem; font-size: 0.8rem; border-radius: 4px; }
+
+    /* User Reviews Section */
+    #user-reviews { background: #fff; }
+    .review-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .review-card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .review-card img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; }
+    .review-card h3 { margin: 0.5rem 0; font-size: 1.1rem; }
+    .review-card p { font-size: 0.9rem; color: #555; }
+
+    .review-form form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #f4f4f4;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: grid;
+      gap: 1rem;
+    }
+    .review-form input,
+    .review-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .review-form textarea { resize: vertical; min-height: 100px; }
+    .review-form button {
+      align-self: flex-end;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      background: #ff5500;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    .review-form button:hover { background: #e64a00; }
 
     footer { background: #222; color: #fff; padding: 2rem; text-align: center; }
     .social-icons a { margin: 0 0.5rem; display: inline-block; transition: transform 0.3s; }
@@ -99,6 +147,12 @@
       .hero .hero-image { margin-top: 2rem; }
       section { padding: 4rem 1rem; }
     }
+    .userpic{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    }
   </style>
 </head>
 <body>
@@ -109,6 +163,7 @@
       <a href="#hero">Home</a>
       <a href="#trending">Trending Shows</a>
       <a href="#popular">Popular Movies</a>
+      <a href="#user-reviews">User Reviews</a>
       <a href="#footer">Contact</a>
     </nav>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -219,6 +274,37 @@
         </div>
         <div class="duration">1h 40m</div>
       </div>
+    </div>
+  </section>
+
+  <!-- user reviews -->
+  <section id="user-reviews">
+    <h2>User Reviews</h2>
+    <p class="subtitle">Hear what our community has to say</p>
+    <div class="review-cards">
+      <div class="review-card">
+        <img class="userpic" src="mediafiles/moodyz.jpg" alt="User 2" />
+        <h3>Moody Z</h3>
+        <p>"bhaiyo aur beheno... ye KshitijPlay bohot badiya hai. YE HAI DIGITAL INDIA!!!"</p>
+      </div>
+      <div class="review-card">
+        <img class="userpic" src="mediafiles/rahul.jpg" alt="User 3" />
+        <h3>Rahul Gandhi</h3>
+        <p>"I can watch <i>'The Modi Question'</i> here :D"</p>
+      </div>
+      <div class="review-card">
+        <img class="userpic" src="mediafiles/didi.jpg" alt="User 1" />
+        <h3>Momota Didi</h3>
+        <p>"Bohut badiya website banaya! Veri gud! Aise hi website banate raho aur Bangla ka economy barate raho! Joy Bangla"</p>
+      </div>
+    </div>
+    <div class="review-form">
+      <form>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="review" placeholder="Your Review" required></textarea>
+        <button type="submit">Submit Review</button>
+      </form>
     </div>
   </section>
 
